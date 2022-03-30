@@ -6,10 +6,10 @@
         <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/content_main.xml" value="0.1" />
         <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/fragment_game_history.xml" value="0.1640625" />
-        <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/fragment_game_play.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/fragment_game_play.xml" value="0.22" />
         <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/fragment_geme_history.xml" value="0.1" />
         <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/item_game_history.xml" value="0.3333333333333333" />
-        <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/item_game_play.xml" value="0.3333333333333333" />
+        <entry key="..\:/Users/eyald/Android projects/4/MadLevel4Task2/app/src/main/res/layout/item_game_play.xml" value="0.22" />
       </map>
     </option>
   </component>

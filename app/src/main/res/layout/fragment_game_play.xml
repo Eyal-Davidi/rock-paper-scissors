@@ -7,6 +7,26 @@
     tools:context=".GamePlayFragment">
 
     <TextView
+        android:id="@+id/vsTitle2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="52dp"
+        android:text="@string/vs_title"
+        app:layout_constraintBottom_toBottomOf="@+id/youChose"
+        app:layout_constraintEnd_toStartOf="@+id/imgChosenRight"
+        app:layout_constraintStart_toEndOf="@+id/imgChosenLeft" />
+
+    <TextView
+        android:id="@+id/tvGameResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="260dp"
+        android:text="@string/game_result"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/gameTitle"
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="wrap_content"
@@ -39,30 +59,29 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
         android:text="@string/tv_statistics_title"
-        app:layout_constraintBottom_toTopOf="@+id/rvGamePlay"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/instructionsTitle" />
 
     <ImageButton
-        android:id="@+id/rockImage"
+        android:id="@+id/imgRock"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginStart="8dp"
         android:contentDescription="@string/rock_image"
         android:scaleType="fitCenter"
         android:src="@drawable/rock"
-        app:layout_constraintBottom_toBottomOf="@+id/paperImage"
-        app:layout_constraintEnd_toStartOf="@+id/paperImage"
+        app:layout_constraintBottom_toBottomOf="@+id/imgPaper"
+        app:layout_constraintEnd_toStartOf="@+id/imgPaper"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/paperImage"
+        app:layout_constraintTop_toTopOf="@+id/imgPaper"
         app:layout_constraintVertical_bias="0.0" />
 
     <ImageButton
-        android:id="@+id/scissorsImage"
+        android:id="@+id/imgScissors"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginEnd="8dp"
@@ -73,20 +92,20 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/paperImage" />
+        app:layout_constraintStart_toEndOf="@+id/imgPaper" />
 
     <ImageButton
-        android:id="@+id/paperImage"
+        android:id="@+id/imgPaper"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:contentDescription="@string/paper_image"
         android:scaleType="fitCenter"
         android:src="@drawable/paper"
-        app:layout_constraintBottom_toBottomOf="@+id/scissorsImage"
-        app:layout_constraintEnd_toStartOf="@+id/scissorsImage"
+        app:layout_constraintBottom_toBottomOf="@+id/imgScissors"
+        app:layout_constraintEnd_toStartOf="@+id/imgScissors"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/rockImage"
-        app:layout_constraintTop_toTopOf="@+id/scissorsImage"
+        app:layout_constraintStart_toEndOf="@+id/imgRock"
+        app:layout_constraintTop_toTopOf="@+id/imgScissors"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline
@@ -96,26 +115,14 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_begin="20dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvGamePlay"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/computerChose"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
-
     <TextView
         android:id="@+id/youChose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="80dp"
+        android:layout_marginEnd="70dp"
         android:layout_marginBottom="66dp"
         android:text="@string/you_chose"
-        app:layout_constraintBottom_toTopOf="@+id/scissorsImage"
+        app:layout_constraintBottom_toTopOf="@+id/imgScissors"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/computerChose" />
 
@@ -123,12 +130,90 @@
         android:id="@+id/computerChose"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
+        android:layout_marginStart="45dp"
         android:layout_marginBottom="66dp"
         android:text="@string/computer_chose"
-        app:layout_constraintBottom_toTopOf="@+id/rockImage"
+        app:layout_constraintBottom_toTopOf="@+id/imgRock"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <ImageView
+        android:id="@+id/imgChosenRight"
+        android:layout_width="131dp"
+        android:layout_height="86dp"
+        android:layout_marginEnd="16dp"
+        android:background="#673AB7"
+        android:contentDescription="@string/chosen_image_right"
+        app:layout_constraintBottom_toTopOf="@+id/youChose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/paper" />
+
+    <ImageView
+        android:id="@+id/imgChosenLeft"
+        android:layout_width="125dp"
+        android:layout_height="83dp"
+        android:layout_marginStart="16dp"
+        android:background="#673AB7"
+        android:contentDescription="@string/chosen_image_left"
+        app:layout_constraintBottom_toTopOf="@+id/computerChose"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvGamePlay" />
+        app:srcCompat="@drawable/paper" />
+
+    <TextView
+        android:id="@+id/winTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/win_title"
+        android:layout_marginTop="184dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/drawTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="184dp"
+        android:text="@string/draw_title"
+        app:layout_constraintEnd_toStartOf="@+id/tvDrawResult"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/loseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lose_title"
+        android:layout_marginTop="184dp"
+        app:layout_constraintEnd_toStartOf="@+id/tvLoseResult"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvWinResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/win_result"
+        android:layout_marginTop="184dp"
+        app:layout_constraintStart_toEndOf="@+id/winTitle"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvDrawResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/draw_result"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="184dp"
+        app:layout_constraintHorizontal_bias="0.583"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvLoseResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/lose_result"
+        android:layout_marginTop="184dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

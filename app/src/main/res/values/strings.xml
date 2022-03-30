@@ -17,11 +17,12 @@
     <string name="win_title">WIN:</string>
     <string name="draw_title">DRAW:</string>
     <string name="lose_title">LOSE:</string>
-    <string name="win_result">win_result</string>
-    <string name="lose_result">lose_result</string>
-    <string name="game_result">game_result</string>
-    <string name="draw_result">draw_result</string>
+    <string name="win_result">0</string>
+    <string name="lose_result">0</string>
+    <string name="game_result">DRAW</string>
+    <string name="draw_result">0</string>
     <string name="vs_title">V.S.</string>
     <string name="chosen_image_left">chosen_image_left</string>
     <string name="chosen_image_right">chosen_image_right</string>
+    <string name="game_date">DATE</string>
 </resources>

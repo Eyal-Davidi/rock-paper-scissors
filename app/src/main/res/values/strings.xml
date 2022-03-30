@@ -12,4 +12,16 @@
     <string name="rock_image">rock_image</string>
     <string name="game_play_fragment_label">gamePlayFragmentLabel</string>
     <string name="game_history_fragment_label">gameHistoryFragmentLabel</string>
+    <string name="computer_chose">Computer</string>
+    <string name="you_chose">You</string>
+    <string name="win_title">WIN:</string>
+    <string name="draw_title">DRAW:</string>
+    <string name="lose_title">LOSE:</string>
+    <string name="win_result">win_result</string>
+    <string name="lose_result">lose_result</string>
+    <string name="game_result">game_result</string>
+    <string name="draw_result">draw_result</string>
+    <string name="vs_title">V.S.</string>
+    <string name="chosen_image_left">chosen_image_left</string>
+    <string name="chosen_image_right">chosen_image_right</string>
 </resources>

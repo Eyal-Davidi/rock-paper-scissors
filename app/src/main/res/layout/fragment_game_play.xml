@@ -102,11 +102,33 @@
         android:layout_height="0dp"
         android:layout_marginTop="1dp"
         android:layout_marginBottom="2dp"
-        app:layout_constraintBottom_toTopOf="@+id/paperImage"
+        app:layout_constraintBottom_toTopOf="@+id/computerChose"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
+
+    <TextView
+        android:id="@+id/youChose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="80dp"
+        android:layout_marginBottom="66dp"
+        android:text="@string/you_chose"
+        app:layout_constraintBottom_toTopOf="@+id/scissorsImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/computerChose" />
+
+    <TextView
+        android:id="@+id/computerChose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="66dp"
+        android:text="@string/computer_chose"
+        app:layout_constraintBottom_toTopOf="@+id/rockImage"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvGamePlay" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

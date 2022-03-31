@@ -9,8 +9,5 @@ data class Game (
     val gameDate: LocalDateTime,
     var youMove: GameMove,
     var computerMove: GameMove,
-    var winCounter: Int=0,
-    var drawCounter: Int=0,
-    var loseCounter: Int=0,
     var gameResult: String = "",
     )

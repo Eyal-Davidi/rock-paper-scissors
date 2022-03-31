@@ -18,6 +18,9 @@ import java.time.LocalDateTime
 class GamePlayFragment : Fragment() {
 
     private var _binding: FragmentGamePlayBinding? = null
+    var winCounter: Int=0
+    var drawCounter: Int=0
+    var loseCounter: Int=0
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -34,10 +37,10 @@ class GamePlayFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         onScissors()
         onPaper()
         onRock()
-
     }
 
     fun updateImages(game : Game){
@@ -48,22 +51,21 @@ class GamePlayFragment : Fragment() {
     fun updateResults(game : Game){
         if (game.gameResult == "WIN") {
             binding.tvGameResult.text = game.gameResult
-            game.winCounter++
-            binding.tvWinResult.text = game.winCounter.toString()
+            winCounter ++
+            binding.tvWinResult.text = winCounter.toString()
         }
+
         if (game.gameResult == "DRAW") {
             binding.tvGameResult.text = game.gameResult
-            game.drawCounter++
-            binding.tvDrawResult.text = game.drawCounter.toString()
+            drawCounter ++
+            binding.tvDrawResult.text = drawCounter.toString()
         }
+
         if (game.gameResult == "LOSE") {
             binding.tvGameResult.text = game.gameResult
-            game.loseCounter++
-            binding.tvLoseResult.text = game.loseCounter.toString()
+            drawCounter ++
+            binding.tvLoseResult.text = drawCounter.toString()
         }
-    }
-
-    fun updateDate(game:Game){
     }
 
     override fun onDestroyView() {

@@ -2,16 +2,14 @@
     <string name="app_name">MadLevel4Task2</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-
     <string name="tv_game_title">Rock, Paper, Scissors</string>
     <string name="tv_instructions_title">Instructions: select rock, paper, or scissors to play</string>
     <string name="tv_statistics_title">YOUR ALL TIME STATISTICS</string>
-    <string name="tv_statistics_results">WIN:   LOSE:    DRAW:</string>
-    <string name="scissors_image">scissors_image</string>
-    <string name="paper_image">paper_image</string>
-    <string name="rock_image">rock_image</string>
-    <string name="game_play_fragment_label">gamePlayFragmentLabel</string>
-    <string name="game_history_fragment_label">gameHistoryFragmentLabel</string>
+    <string name="scissors_image">scissors image</string>
+    <string name="paper_image">paper image</string>
+    <string name="rock_image">rock image</string>
+    <string name="game_play_fragment_label">GamePlayFragmentLabel</string>
+    <string name="game_history_fragment_label">GameHistoryFragmentLabel</string>
     <string name="computer_chose">Computer</string>
     <string name="you_chose">You</string>
     <string name="win_title">WIN:</string>
@@ -22,7 +20,9 @@
     <string name="game_result">DRAW</string>
     <string name="draw_result">0</string>
     <string name="vs_title">V.S.</string>
-    <string name="chosen_image_left">chosen_image_left</string>
-    <string name="chosen_image_right">chosen_image_right</string>
+    <string name="chosen_image_left">chosen image left</string>
+    <string name="chosen_image_right">chosen image right</string>
     <string name="game_date">DATE</string>
+    <string name="menu_item_play_game">Play</string>
+    <string name="menu_item_history">History</string>
 </resources>

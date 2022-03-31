@@ -1,32 +1,37 @@
 package com.example.madlevel4task2
 
+import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.madlevel4task2.databinding.FragmentGameHistoryBinding
 import com.example.madlevel4task2.databinding.ItemGameHistoryBinding
+import java.time.LocalDateTime
 
-/*
 class GameHistoryAdapter(private val games: List<Game>) : RecyclerView.Adapter<GameHistoryAdapter.ViewHolder>() {
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         val binding = ItemGameHistoryBinding.bind(itemView)
-/*
-        fun databind(gamePlay: Game) {
-            binding.tvGameResult.text = gamePlay.gameResult
-            binding.tvGameDate.text = gamePlay.gameDate
-            //binding.tvWinResult.text = gamePlay.gameWin
-        }
 
- */
+        fun databind(gameHistory: Game) {
+            gameHistory.gameDate = LocalDateTime.now()
+            binding.tvGameResult.text = gameHistory.gameResult
+            binding.imgChosenRight.setImageResource(gameHistory.youMove.imgId)
+            binding.imgChosenLeft.setImageResource(gameHistory.computerMove.imgId)
+            binding.tvGameResult.text = gameHistory.gameResult
+        }
     }
     /**
      * Creates and returns a ViewHolder object, inflating a standard layout called simple_list_item_1.
      */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_game_play, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_game_history, parent, false)
         )
     }
     /**
@@ -42,6 +47,3 @@ class GameHistoryAdapter(private val games: List<Game>) : RecyclerView.Adapter<G
         holder.databind(games[position])
     }
 }
-
-
- */

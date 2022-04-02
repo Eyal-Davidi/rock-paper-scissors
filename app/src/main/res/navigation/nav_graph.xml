@@ -3,24 +3,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/GamePlayFragment">
+    app:startDestination="@id/FirstFragment">
 
     <fragment
-        android:id="@+id/GamePlayFragment"
+        android:id="@+id/FirstFragment"
         android:name="com.example.madlevel4task2.GamePlayFragment"
         android:label="@string/game_play_fragment_label"
         tools:layout="@layout/fragment_game_play">
         <action
-            android:id="@+id/action_GamePlayFragment_to_GameHistoryFragment"
-            app:destination="@id/GameHistoryFragment" />
+            android:id="@+id/action_FirstFragment_to_SecondFragment"
+            app:destination="@id/SecondFragment" />
     </fragment>
     <fragment
-        android:id="@+id/GameHistoryFragment"
+        android:id="@+id/SecondFragment"
         android:name="com.example.madlevel4task2.GameHistoryFragment"
         android:label="@string/game_history_fragment_label"
         tools:layout="@layout/fragment_game_history">
         <action
-            android:id="@+id/action_GameHistoryFragment_to_GamePlayFragment"
-            app:destination="@id/GamePlayFragment" />
+            android:id="@+id/action_SecondFragment_to_FirstFragment"
+            app:destination="@id/FirstFragment" />
     </fragment>
 </navigation>

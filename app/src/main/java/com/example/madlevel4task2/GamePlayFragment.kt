@@ -63,8 +63,8 @@ class GamePlayFragment : Fragment() {
 
         if (game.gameResult == "LOSE") {
             binding.tvGameResult.text = game.gameResult
-            drawCounter ++
-            binding.tvLoseResult.text = drawCounter.toString()
+            loseCounter ++
+            binding.tvLoseResult.text = loseCounter.toString()
         }
     }
 

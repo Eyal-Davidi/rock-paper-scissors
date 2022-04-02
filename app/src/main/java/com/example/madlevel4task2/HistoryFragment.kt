@@ -5,19 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.madlevel4task2.databinding.FragmentGameHistoryBinding
+import com.example.madlevel4task2.databinding.FragmentHistoryBinding
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class GameHistoryFragment : Fragment() {
+class HistoryFragment : Fragment() {
 
-    private var _binding: FragmentGameHistoryBinding? = null
+    private var _binding: FragmentHistoryBinding? = null
     private val games = arrayListOf<Game>()
-    private val gameHistoryAdapter = GameHistoryAdapter(games)
+    private val HistoryAdapter = HistoryAdapter(games)
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -28,7 +27,7 @@ class GameHistoryFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentGameHistoryBinding.inflate(inflater, container, false)
+        _binding = FragmentHistoryBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -40,9 +39,9 @@ class GameHistoryFragment : Fragment() {
 
     private fun initViews() {
         // Initialize the recycler view with a linear layout manager, adapter
-        binding.rvGameHistory.layoutManager =
+        binding.rvHistory.layoutManager =
             LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        binding.rvGameHistory.adapter = gameHistoryAdapter
+        binding.rvHistory.adapter = HistoryAdapter
         //createItemTouchHelper().attachToRecyclerView(binding.rvGameHistory)
     }
 

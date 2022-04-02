@@ -10,8 +10,8 @@
     <string name="scissors_image">Scissors image</string>
     <string name="paper_image">Paper image</string>
     <string name="rock_image">Rock image</string>
-    <string name="game_play_fragment_label">Rock, Paper, Scissors Game</string>
-    <string name="game_history_fragment_label">Rock, Paper, Scissors Game History</string>
+    <string name="main_fragment_label">Rock, Paper, Scissors Game</string>
+    <string name="history_fragment_label">Rock, Paper, Scissors Game History</string>
     <string name="computer_chose">Computer</string>
     <string name="you_chose">You</string>
     <string name="win_title">WIN:</string>
@@ -25,4 +25,6 @@
     <string name="chosen_image_left">Chosen image left</string>
     <string name="chosen_image_right">Chosen image right</string>
     <string name="game_date">DATE</string>
+    <string name="menu_item_play_game">Play</string>
+    <string name="menu_item_history">History</string>
 </resources>

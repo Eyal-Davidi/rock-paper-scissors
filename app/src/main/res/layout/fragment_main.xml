@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GamePlayFragment">
+    tools:context=".MainFragment">
 
     <TextView
         android:id="@+id/vsTitle2"
@@ -68,6 +68,34 @@
         app:layout_constraintTop_toBottomOf="@+id/instructionsTitle" />
 
     <ImageButton
+        android:id="@+id/imgPaper"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:contentDescription="@string/paper_image"
+        android:scaleType="fitCenter"
+        android:src="@drawable/paper"
+        app:layout_constraintBottom_toBottomOf="@+id/imgScissors"
+        app:layout_constraintEnd_toStartOf="@+id/imgScissors"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgRock"
+        app:layout_constraintTop_toTopOf="@+id/imgScissors"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imgScissors"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="60dp"
+        android:contentDescription="@string/scissors_image"
+        android:scaleType="fitCenter"
+        android:src="@drawable/scissors"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/imgPaper" />
+
+    <ImageButton
         android:id="@+id/imgRock"
         android:layout_width="120dp"
         android:layout_height="120dp"
@@ -81,34 +109,6 @@
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/imgPaper"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <ImageButton
-        android:id="@+id/imgScissors"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="16dp"
-        android:contentDescription="@string/scissors_image"
-        android:scaleType="fitCenter"
-        android:src="@drawable/scissors"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgPaper" />
-
-    <ImageButton
-        android:id="@+id/imgPaper"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:contentDescription="@string/paper_image"
-        android:scaleType="fitCenter"
-        android:src="@drawable/paper"
-        app:layout_constraintBottom_toBottomOf="@+id/imgScissors"
-        app:layout_constraintEnd_toStartOf="@+id/imgScissors"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imgRock"
-        app:layout_constraintTop_toTopOf="@+id/imgScissors"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.Guideline

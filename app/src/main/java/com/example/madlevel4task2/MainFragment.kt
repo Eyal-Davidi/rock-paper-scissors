@@ -1,23 +1,19 @@
 package com.example.madlevel4task2
 
-import android.app.AlertDialog
-import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.EditText
-import androidx.navigation.fragment.findNavController
-import com.example.madlevel4task2.databinding.FragmentGamePlayBinding
+import com.example.madlevel4task2.databinding.FragmentMainBinding
 import java.time.LocalDateTime
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
-class GamePlayFragment : Fragment() {
+class MainFragment : Fragment() {
 
-    private var _binding: FragmentGamePlayBinding? = null
+    private var _binding: FragmentMainBinding? = null
     var winCounter: Int=0
     var drawCounter: Int=0
     var loseCounter: Int=0
@@ -31,7 +27,7 @@ class GamePlayFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-        _binding = FragmentGamePlayBinding.inflate(inflater, container, false)
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
         return binding.root
     }
 

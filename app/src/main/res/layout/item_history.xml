@@ -1,44 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="150dp">
+    android:layout_height="180dp">
 
 
     <ImageView
-        android:id="@+id/imgChosenRight"
+        android:id="@+id/imgChosenRightHistory"
         android:layout_width="131dp"
         android:layout_height="86dp"
         android:layout_marginEnd="16dp"
+        android:background="#673AB7"
         android:contentDescription="@string/chosen_image_right"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:srcCompat="@drawable/paper" />
 
     <ImageView
-        android:id="@+id/imgChosenLeft"
+        android:id="@+id/imgChosenLeftHistory"
         android:layout_width="131dp"
         android:layout_height="86dp"
         android:layout_marginStart="16dp"
+        android:background="#673AB7"
         android:contentDescription="@string/chosen_image_left"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@drawable/paper" />
 
     <TextView
-        android:id="@+id/vsTitle"
+        android:id="@+id/vsTitleHistory"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="92dp"
         android:text="@string/vs_title"
-        app:layout_constraintEnd_toStartOf="@+id/imgChosenRight"
+        app:layout_constraintEnd_toStartOf="@+id/imgChosenRightHistory"
         app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toEndOf="@+id/imgChosenLeft"
+        app:layout_constraintStart_toEndOf="@+id/imgChosenLeftHistory"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvGameResult"
+        android:id="@+id/tvGameResultHistory"
+        style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
@@ -48,7 +51,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvGameDate"
+        android:id="@+id/tvGameDateHistory"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
@@ -56,7 +59,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvGameResult" />
+        app:layout_constraintTop_toBottomOf="@+id/tvGameResultHistory" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,22 +1,30 @@
 package com.example.madlevel4task2
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.setFragmentResult
 import com.example.madlevel4task2.databinding.FragmentMainBinding
 import java.time.LocalDateTime
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
  */
+
+const val REQ_GAME_KEY = "req_game"
+const val BUNDLE_GAME_KEY = "bundle_game"
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
-    var winCounter: Int=0
-    var drawCounter: Int=0
-    var loseCounter: Int=0
+    private var winCounter: Int=0
+    private var drawCounter: Int=0
+    private var loseCounter: Int=0
+    private var result: String =""
+    private var imgYou: Int =0
+    private var imgComputer: Int =0
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -39,12 +47,15 @@ class MainFragment : Fragment() {
         onRock()
     }
 
-    fun updateImages(game : Game){
+    private fun updateImages(game : Game){
         binding.imgChosenRight.setImageResource(game.youMove.imgId)
         binding.imgChosenLeft.setImageResource(game.computerMove.imgId)
+
+        imgYou = game.youMove.imgId
+        imgComputer = game.computerMove.imgId
     }
 
-    fun updateResults(game : Game){
+    private fun updateResults(game : Game){
         if (game.gameResult == "WIN") {
             binding.tvGameResult.text = game.gameResult
             winCounter ++
@@ -62,6 +73,17 @@ class MainFragment : Fragment() {
             loseCounter ++
             binding.tvLoseResult.text = loseCounter.toString()
         }
+        result = game.gameResult
+    }
+
+    private fun updateGameHistory (game:Game){
+        /*
+        game.gameDate = LocalDateTime.now()
+        game.gameResult = result
+        game.youMove.imgId = imgYou
+        game.computerMove.imgId = imgComputer
+         */
+        setFragmentResult(REQ_GAME_KEY, bundleOf(Pair(BUNDLE_GAME_KEY, game)))
     }
 
     override fun onDestroyView() {
@@ -69,7 +91,7 @@ class MainFragment : Fragment() {
         _binding = null
     }
 
-    fun onScissors() {
+    private fun onScissors() {
         binding.imgScissors.setOnClickListener {
             val game = Game(
                 LocalDateTime.now(),
@@ -86,10 +108,11 @@ class MainFragment : Fragment() {
 
             updateImages(game)
             updateResults(game)
+            updateGameHistory(game)
         }
     }
 
-    fun onPaper() {
+    private fun onPaper() {
         binding.imgPaper.setOnClickListener {
             val game = Game(
                 LocalDateTime.now(),
@@ -106,10 +129,11 @@ class MainFragment : Fragment() {
 
             updateImages(game)
             updateResults(game)
+            updateGameHistory(game)
         }
     }
 
-    fun onRock(){
+    private fun onRock() {
         binding.imgRock.setOnClickListener {
             val game = Game(
                 LocalDateTime.now(),
@@ -125,6 +149,7 @@ class MainFragment : Fragment() {
 
             updateImages(game)
             updateResults(game)
+            updateGameHistory(game)
         }
     }
 }

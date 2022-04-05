@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel4task2.databinding.ItemHistoryBinding
 import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 
 class HistoryAdapter(private val games: List<Game>) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {
 
@@ -13,12 +14,12 @@ class HistoryAdapter(private val games: List<Game>) : RecyclerView.Adapter<Histo
 
         val binding = ItemHistoryBinding.bind(itemView)
 
-        fun databind(history: Game) {
-           // history.gameDate = LocalDateTime.now()
-            //binding.tvGameResult.text = history.gameResult
-            binding.imgChosenRight.setImageResource(history.youMove.imgId)
-            binding.imgChosenLeft.setImageResource(history.computerMove.imgId)
-            //binding.tvGameResult.text = history.gameResult
+        fun databind(game: Game) {
+            val formatter = DateTimeFormatter.ofPattern("EEE MMM d HH:mm:ss yyyy")
+            binding.tvGameDateHistory.text = formatter.format(game.gameDate)
+            binding.tvGameResultHistory.text = game.gameResult
+            binding.imgChosenRightHistory.setImageResource(game.youMove.imgId)
+            binding.imgChosenLeftHistory.setImageResource(game.computerMove.imgId)
         }
     }
     /**

@@ -11,19 +11,19 @@ class GameRepository(context: Context) {
         gameDao = gameRoomDatabase!!.gameDao()
     }
 
-    fun getAllGames(): List<Game> {
+    suspend fun getAllGames(): List<Game> {
         return gameDao.getAllGames()
     }
 
-    fun insertGame(game: Game) {
+    suspend fun insertGame(game: Game) {
         gameDao.insertGame(game)
     }
 
-    fun deleteGame(game: Game) {
+    suspend fun deleteGame(game: Game) {
         gameDao.deleteGame(game)
     }
 
-    fun updateGame(game: Game) {
+    suspend fun updateGame(game: Game) {
         gameDao.updateGame(game)
     }
 }

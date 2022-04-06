@@ -6,14 +6,14 @@ import androidx.room.*
 interface GameDao {
 
         @Query("SELECT * FROM gameTable")
-        fun getAllGames(): List<Game>
+        suspend fun getAllGames(): List<Game>
 
         @Insert
-        fun insertGame(game: Game)
+        suspend fun insertGame(game: Game)
 
         @Delete
-        fun deleteGame(game: Game)
+        suspend fun deleteGame(game: Game)
 
         @Update
-        fun updateGame(game: Game)
+        suspend fun updateGame(game: Game)
 }

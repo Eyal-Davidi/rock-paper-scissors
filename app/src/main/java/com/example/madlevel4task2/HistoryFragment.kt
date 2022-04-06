@@ -27,6 +27,9 @@ class HistoryFragment : Fragment() {
     private val historyAdapter = HistoryAdapter(games)
 
     private lateinit var gameRepository: GameRepository
+    ////////
+    private val mainScope = CoroutineScope(Dispatchers.Main)
+
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -43,11 +46,25 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        gameRepository = GameRepository(requireContext())
+        getGamesFromDatabase()
+
+        //initRV()
         initViews()
         observeGameResult()
 
-        gameRepository = GameRepository(requireContext())
-        getGamesFromDatabase()
+        binding.fabDeleteAll.setOnClickListener {
+            removeAllProducts()
+        }
+    }
+
+    private fun removeAllProducts() {
+        mainScope.launch {
+            withContext(Dispatchers.IO) {
+                gameRepository.deleteAllProducts()
+            }
+            getGamesFromDatabase()
+        }
     }
 
     private fun initViews() {

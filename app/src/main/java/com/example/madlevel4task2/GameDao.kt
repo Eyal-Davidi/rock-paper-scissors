@@ -16,4 +16,7 @@ interface GameDao {
 
         @Update
         suspend fun updateGame(game: Game)
+
+        @Query("DELETE FROM gameTable")
+        suspend fun deleteAllProducts()
 }

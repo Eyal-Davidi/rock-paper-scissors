@@ -8,6 +8,10 @@ import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
 import com.example.madlevel4task2.databinding.FragmentMainBinding
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
 
 /**
@@ -26,6 +30,11 @@ class MainFragment : Fragment() {
     private var imgYou: Int =0
     private var imgComputer: Int =0
 
+    private lateinit var gameRepository: GameRepository
+    private val mainScope = CoroutineScope(Dispatchers.Main)
+    val games = arrayListOf<Game>()
+    val historyAdapter = HistoryAdapter(games)
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
@@ -42,10 +51,33 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        gameRepository = GameRepository(requireContext())
+        getGamesFromDatabase()
+
         onScissors()
         onPaper()
         onRock()
     }
+
+    private fun addGame(game: Game) {
+            mainScope.launch {
+                //use parcel
+                setFragmentResult(REQ_GAME_KEY, bundleOf(Pair(BUNDLE_GAME_KEY, game)))
+                //val game = Game(gameDate = LocalDateTime.now(), gameResult = result, youMove =imgYou )
+//
+//                val game = Game(gameDate = LocalDateTime.now(),
+//                        game.gameResult = result,
+//                        game.youMove.imgId = imgYou,
+//                        game.computerMove.imgId = imgComputer
+//                )
+
+                withContext(Dispatchers.IO) {
+                    gameRepository.insertGame(game)
+                }
+
+                getGamesFromDatabase()
+            }
+        }
 
     private fun updateImages(game : Game){
         binding.imgChosenRight.setImageResource(game.youMove.imgId)
@@ -76,14 +108,28 @@ class MainFragment : Fragment() {
         result = game.gameResult
     }
 
-    private fun updateGameHistory (game:Game){
-        /*
-        game.gameDate = LocalDateTime.now()
-        game.gameResult = result
-        game.youMove.imgId = imgYou
-        game.computerMove.imgId = imgComputer
-         */
-        setFragmentResult(REQ_GAME_KEY, bundleOf(Pair(BUNDLE_GAME_KEY, game)))
+//    /////INSERT GAMES HERE
+//    private fun updateGameHistory (game:Game){
+//        /*
+//        game.gameDate = LocalDateTime.now()
+//        game.gameResult = result
+//        game.youMove.imgId = imgYou
+//        game.computerMove.imgId = imgComputer
+//         */
+//
+//        //setFragmentResult(REQ_GAME_KEY, bundleOf(Pair(BUNDLE_GAME_KEY, game)))
+//        getGamesFromDatabase()
+//    }
+
+    private fun getGamesFromDatabase() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val games = withContext(Dispatchers.IO) {
+                gameRepository.getAllGames()
+            }
+            this@MainFragment.games.clear()
+            this@MainFragment.games.addAll(games)
+            historyAdapter.notifyDataSetChanged()
+        }
     }
 
     override fun onDestroyView() {
@@ -108,7 +154,7 @@ class MainFragment : Fragment() {
 
             updateImages(game)
             updateResults(game)
-            updateGameHistory(game)
+            addGame(game)
         }
     }
 
@@ -129,7 +175,7 @@ class MainFragment : Fragment() {
 
             updateImages(game)
             updateResults(game)
-            updateGameHistory(game)
+            addGame(game)
         }
     }
 
@@ -149,7 +195,7 @@ class MainFragment : Fragment() {
 
             updateImages(game)
             updateResults(game)
-            updateGameHistory(game)
+            addGame(game)
         }
     }
 }

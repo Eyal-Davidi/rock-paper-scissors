@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.setFragmentResult
 import androidx.fragment.app.setFragmentResultListener
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel4task2.databinding.FragmentHistoryBinding
@@ -23,12 +24,12 @@ import kotlinx.coroutines.withContext
 class HistoryFragment : Fragment() {
 
     private var _binding: FragmentHistoryBinding? = null
-    private val games = arrayListOf<Game>()
-    private val historyAdapter = HistoryAdapter(games)
+    val games = arrayListOf<Game>()
+    val historyAdapter = HistoryAdapter(games)
 
-    private lateinit var gameRepository: GameRepository
+    lateinit var gameRepository: GameRepository
     ////////
-    private val mainScope = CoroutineScope(Dispatchers.Main)
+    val mainScope = CoroutineScope(Dispatchers.Main)
 
 
     // This property is only valid between onCreateView and
@@ -46,12 +47,12 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         gameRepository = GameRepository(requireContext())
         getGamesFromDatabase()
 
-        //initRV()
         initViews()
-        observeGameResult()
+        //observeGameResult()
 
         binding.fabDeleteAll.setOnClickListener {
             removeAllProducts()
@@ -66,12 +67,25 @@ class HistoryFragment : Fragment() {
             getGamesFromDatabase()
         }
     }
-
+///////////////////XXXXXXX///////////
     private fun initViews() {
         // Initialize the recycler view with a linear layout manager, adapter
-        binding.rvHistory.layoutManager =
-            LinearLayoutManager(context, RecyclerView.VERTICAL, false)
-        binding.rvHistory.adapter = historyAdapter
+        //binding.rvHistory.layoutManager =
+        binding.rvHistory.apply {
+            layoutManager = LinearLayoutManager(context, RecyclerView.VERTICAL, false)
+            adapter = historyAdapter
+            /////XXXXXXX/////
+            setHasFixedSize(true)
+//            addItemDecoration(
+//                DividerItemDecoration(
+//                    context,
+//                    DividerItemDecoration.VERTICAL
+//                )
+            //createItemTouchHelper().attachToRecyclerView(this)
+            //////XXXXX//// ADD SOMETHING INSTEAD TO ADD TO THE RECYCLERVIEW??
+
+            //binding.rvHistory.adapter = historyAdapter
+        }
     }
 
     override fun onDestroyView() {
@@ -79,20 +93,21 @@ class HistoryFragment : Fragment() {
         _binding = null
     }
 
-    private fun observeGameResult() {
-        setFragmentResultListener(REQ_GAME_KEY) { _, bundle ->
-            bundle.getParcelable<Game>(BUNDLE_GAME_KEY)?.let {
-                //////////XXXXX//// val game = parcel?? need to be for the whole class!!
-                val game = it
-                CoroutineScope(Dispatchers.Main).launch {
-                    withContext(Dispatchers.IO) {
-                        gameRepository.insertGame(game)
-                    }
-                    getGamesFromDatabase()
-                }
-            } ?: Log.e("GamesFragment", "Request triggered, but empty game text!")
-        }
-    }
+//    /////XXXXXXDELETE
+//    private fun observeGameResult() {
+//        setFragmentResultListener(REQ_GAME_KEY) { _, bundle ->
+//            bundle.getParcelable<Game>(BUNDLE_GAME_KEY)?.let {
+//                //////////XXXXX//// val game = parcel?? need to be for the whole class!!
+//                val game = it
+//                CoroutineScope(Dispatchers.Main).launch {
+//                    withContext(Dispatchers.IO) {
+//                        gameRepository.insertGame(game)
+//                    }
+//                    getGamesFromDatabase()
+//                }
+//            } ?: Log.e("GamesFragment", "Request triggered, but empty game text!")
+//        }
+//    }
                 //games.add(game)
                 //historyAdapter.notifyDataSetChanged()
 
@@ -103,12 +118,15 @@ class HistoryFragment : Fragment() {
 //    }
 
     private fun getGamesFromDatabase() {
-        CoroutineScope(Dispatchers.Main).launch {
+        //CoroutineScope(Dispatchers.Main).launch {
+        mainScope.launch{
             val games = withContext(Dispatchers.IO) {
                 gameRepository.getAllGames()
             }
             this@HistoryFragment.games.clear()
             this@HistoryFragment.games.addAll(games)
+            //games.clear()
+            //games.addAll(game)
             historyAdapter.notifyDataSetChanged()
         }
     }

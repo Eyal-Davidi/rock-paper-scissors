@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.madlevel4task2.databinding.ItemHistoryBinding
-import java.time.LocalDateTime
+import com.example.madlevel4task2.model.Game
 import java.time.format.DateTimeFormatter
 
 class HistoryAdapter(private val games: List<Game>) : RecyclerView.Adapter<HistoryAdapter.ViewHolder>() {

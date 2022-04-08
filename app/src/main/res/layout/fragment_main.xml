@@ -23,7 +23,7 @@
         style="@style/TextAppearance.MaterialComponents.Headline4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="236dp"
+        android:layout_marginTop="300dp"
         android:text="@string/game_result"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -123,7 +123,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="70dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/you_chose"
         app:layout_constraintBottom_toTopOf="@+id/imgScissors"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +134,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="45dp"
-        android:layout_marginBottom="66dp"
+        android:layout_marginBottom="100dp"
         android:text="@string/computer_chose"
         app:layout_constraintBottom_toTopOf="@+id/imgRock"
         app:layout_constraintStart_toStartOf="parent" />
@@ -167,66 +167,69 @@
         style="@style/TextAppearance.MaterialComponents.Overline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="30dp"
         android:text="@string/lose_title"
-        app:layout_constraintStart_toEndOf="@+id/tvDrawResult"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/drawTitle"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
 
     <TextView
         android:id="@+id/drawTitle"
         style="@style/TextAppearance.MaterialComponents.Overline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="30dp"
         android:text="@string/draw_title"
-        app:layout_constraintStart_toEndOf="@+id/tvWinResult"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/loseTitle"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/winTitle"
+        app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
 
     <TextView
         android:id="@+id/winTitle"
         style="@style/TextAppearance.MaterialComponents.Overline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="116dp"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="30dp"
         android:text="@string/win_title"
-        app:layout_constraintEnd_toStartOf="@+id/tvWinResult"
+        app:layout_constraintEnd_toStartOf="@+id/drawTitle"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintHorizontal_chainStyle="spread"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
 
     <TextView
         android:id="@+id/tvWinResult"
         style="@style/TextAppearance.MaterialComponents.Overline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="30dp"
         android:text="@string/win_result"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/winTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
 
     <TextView
         android:id="@+id/tvDrawResult"
         style="@style/TextAppearance.MaterialComponents.Overline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="30dp"
         android:text="@string/draw_result"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/drawTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
 
     <TextView
         android:id="@+id/tvLoseResult"
         style="@style/TextAppearance.MaterialComponents.Overline"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="184dp"
+        android:layout_marginTop="30dp"
         android:text="@string/lose_result"
+        android:visibility="visible"
         app:layout_constraintStart_toEndOf="@+id/loseTitle"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/statisticsTitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -6,7 +6,6 @@
     <string name="tv_game_title">Rock, Paper, Scissors</string>
     <string name="tv_instructions_title">Instructions: select rock, paper, or scissors to play</string>
     <string name="tv_statistics_title">YOUR ALL TIME STATISTICS</string>
-    <string name="tv_statistics_results">WIN:   LOSE:    DRAW:</string>
     <string name="scissors_image">Scissors image</string>
     <string name="paper_image">Paper image</string>
     <string name="rock_image">Rock image</string>
@@ -17,14 +16,16 @@
     <string name="win_title">WIN:</string>
     <string name="draw_title">DRAW:</string>
     <string name="lose_title">LOSE:</string>
-    <string name="win_result">0</string>
-    <string name="lose_result">0</string>
-    <string name="game_result">DRAW</string>
-    <string name="draw_result">0</string>
+    <string name="win_result"></string>
+    <string name="lose_result"></string>
+    <string name="game_result">Draw</string>
+    <string name="draw_result"></string>
     <string name="vs_title">V.S.</string>
     <string name="chosen_image_left">Chosen image left</string>
     <string name="chosen_image_right">Chosen image right</string>
     <string name="game_date">DATE</string>
     <string name="menu_item_play_game">Play</string>
     <string name="menu_item_history">History</string>
+    <string name="you_chose_history">You</string>
+    <string name="computer">Computer</string>
 </resources>

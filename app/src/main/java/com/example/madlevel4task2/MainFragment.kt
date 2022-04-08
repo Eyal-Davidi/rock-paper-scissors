@@ -7,7 +7,11 @@ import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.setFragmentResult
+import com.example.madlevel4task2.GameMove
+import com.example.madlevel4task2.HistoryAdapter
 import com.example.madlevel4task2.databinding.FragmentMainBinding
+import com.example.madlevel4task2.model.Game
+import com.example.madlevel4task2.repository.GameRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -23,17 +27,14 @@ const val BUNDLE_GAME_KEY = "bundle_game"
 class MainFragment : Fragment() {
 
     private var _binding: FragmentMainBinding? = null
-    private var winCounter: Int=0
-    private var drawCounter: Int=0
-    private var loseCounter: Int=0
     private var result: String =""
     private var imgYou: Int =0
     private var imgComputer: Int =0
 
     private lateinit var gameRepository: GameRepository
     private val mainScope = CoroutineScope(Dispatchers.Main)
-    val games = arrayListOf<Game>()
-    val historyAdapter = HistoryAdapter(games)
+    private val games = arrayListOf<Game>()
+    private val historyAdapter = HistoryAdapter(games)
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -59,22 +60,13 @@ class MainFragment : Fragment() {
         onRock()
     }
 
-    private fun addGame(game: Game) {
+    private fun addGameToHistory(game: Game) {
             mainScope.launch {
-                //use parcel
                 setFragmentResult(REQ_GAME_KEY, bundleOf(Pair(BUNDLE_GAME_KEY, game)))
-                //val game = Game(gameDate = LocalDateTime.now(), gameResult = result, youMove =imgYou )
-//
-//                val game = Game(gameDate = LocalDateTime.now(),
-//                        game.gameResult = result,
-//                        game.youMove.imgId = imgYou,
-//                        game.computerMove.imgId = imgComputer
-//                )
 
                 withContext(Dispatchers.IO) {
                     gameRepository.insertGame(game)
                 }
-
                 getGamesFromDatabase()
             }
         }
@@ -88,40 +80,26 @@ class MainFragment : Fragment() {
     }
 
     private fun updateResults(game : Game){
-        if (game.gameResult == "WIN") {
+        if (game.gameResult == "You win!") {
             binding.tvGameResult.text = game.gameResult
-            winCounter ++
-            binding.tvWinResult.text = winCounter.toString()
         }
 
-        if (game.gameResult == "DRAW") {
+        if (game.gameResult == "Draw") {
             binding.tvGameResult.text = game.gameResult
-            drawCounter ++
-            binding.tvDrawResult.text = drawCounter.toString()
         }
 
-        if (game.gameResult == "LOSE") {
+        if (game.gameResult == "Computer wins!") {
             binding.tvGameResult.text = game.gameResult
-            loseCounter ++
-            binding.tvLoseResult.text = loseCounter.toString()
         }
         result = game.gameResult
+        getGamesFromDatabase()
     }
 
-//    /////INSERT GAMES HERE
-//    private fun updateGameHistory (game:Game){
-//        /*
-//        game.gameDate = LocalDateTime.now()
-//        game.gameResult = result
-//        game.youMove.imgId = imgYou
-//        game.computerMove.imgId = imgComputer
-//         */
-//
-//        //setFragmentResult(REQ_GAME_KEY, bundleOf(Pair(BUNDLE_GAME_KEY, game)))
-//        getGamesFromDatabase()
-//    }
-
     private fun getGamesFromDatabase() {
+        getWinsCounterFromDatabase()
+        getDrawsCounterFromDatabase()
+        getLosesCounterFromDatabase()
+
         CoroutineScope(Dispatchers.Main).launch {
             val games = withContext(Dispatchers.IO) {
                 gameRepository.getAllGames()
@@ -129,6 +107,33 @@ class MainFragment : Fragment() {
             this@MainFragment.games.clear()
             this@MainFragment.games.addAll(games)
             historyAdapter.notifyDataSetChanged()
+        }
+    }
+
+    private fun getWinsCounterFromDatabase() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val winCounters = withContext(Dispatchers.IO) {
+                gameRepository.countWins()
+            }
+            binding.tvWinResult.text = winCounters
+        }
+    }
+
+    private fun getDrawsCounterFromDatabase() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val drawsCounter = withContext(Dispatchers.IO) {
+                gameRepository.countDraws()
+            }
+            binding.tvDrawResult.text = drawsCounter
+        }
+    }
+
+    private fun getLosesCounterFromDatabase() {
+        CoroutineScope(Dispatchers.Main).launch {
+            val losesCounter = withContext(Dispatchers.IO) {
+                gameRepository.countLoses()
+            }
+            binding.tvLoseResult.text = losesCounter
         }
     }
 
@@ -146,15 +151,15 @@ class MainFragment : Fragment() {
             )
 
             if (game.computerMove == GameMove.scissors)
-                game.gameResult = "DRAW"
+                game.gameResult = "Draw"
             if (game.computerMove == GameMove.paper)
-                game.gameResult = "WIN"
+                game.gameResult = "You win!"
             if (game.computerMove == GameMove.rock)
-                game.gameResult = "LOSE"
+                game.gameResult = "Computer wins!"
 
             updateImages(game)
             updateResults(game)
-            addGame(game)
+            addGameToHistory(game)
         }
     }
 
@@ -167,15 +172,15 @@ class MainFragment : Fragment() {
             )
 
             if (game.computerMove == GameMove.scissors)
-                game.gameResult = "LOSE"
+                game.gameResult = "Computer wins!"
             if (game.computerMove == GameMove.paper)
-                game.gameResult = "DRAW"
+                game.gameResult = "Draw"
             if (game.computerMove == GameMove.rock)
-                game.gameResult = "WIN"
+                game.gameResult = "You win!"
 
             updateImages(game)
             updateResults(game)
-            addGame(game)
+            addGameToHistory(game)
         }
     }
 
@@ -187,16 +192,15 @@ class MainFragment : Fragment() {
                 GameMove.values().random()
             )
             if (game.computerMove == GameMove.scissors)
-                game.gameResult = "WIN"
+                game.gameResult = "You win!"
             if (game.computerMove == GameMove.paper)
-                game.gameResult = "LOSE"
+                game.gameResult = "Computer wins!"
             if (game.computerMove == GameMove.rock)
-                game.gameResult = "DRAW"
+                game.gameResult = "Draw"
 
             updateImages(game)
             updateResults(game)
-            addGame(game)
+            addGameToHistory(game)
         }
     }
 }
-

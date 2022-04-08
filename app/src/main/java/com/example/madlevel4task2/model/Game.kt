@@ -1,9 +1,11 @@
-package com.example.madlevel4task2
+package com.example.madlevel4task2.model
 
 import android.os.Parcelable
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.example.madlevel4task2.GameMove
+//import com.example.madlevel4task2.GameMove
 import kotlinx.android.parcel.Parcelize
 import java.time.LocalDateTime
 
@@ -17,7 +19,7 @@ data class Game (
     var youMove: GameMove,
 
     @ColumnInfo(name = "Computer's move")
-    var computerMove: GameMove,
+        var computerMove: GameMove,
 
     @ColumnInfo(name = "game result")
     var gameResult: String = "",
@@ -26,6 +28,7 @@ data class Game (
     @ColumnInfo(name = "id")
     var id: Long? = null
 ): Parcelable
+
 
 
 
